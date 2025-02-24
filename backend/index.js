@@ -15,8 +15,12 @@ const port = process.env.PORT || 4000;
 
 /* Middlewares */
 app.use(express.json());
-app.use(cors());
-
+app.use(cors({
+  origin: ['https://library-management-new.vercel.app', 'http://localhost:3000'],
+  methods: 'GET, POST, PUT, DELETE',
+  allowedHeaders: 'Content-Type',
+  credentials: true,
+}));
 /* API Routes */
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
